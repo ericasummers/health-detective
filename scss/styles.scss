@@ -27,7 +27,27 @@ body {
 
 .container {
   font-family: 'Lobster', cursive;
-  form {
+  #search-form {
     font-family: 'Libre Baskerville', serif;
+  }
+  #doctor-results {
+    h3 {
+      font-weight: bold;
+    }
+    #found-doctors {
+      font-family: 'Libre Baskerville', serif;
+      .doctor-entry {
+        margin-bottom: 10%;
+      }
+      .doctor-bold, .doctor-name {
+        font-weight: bold;
+      }
+      .doctor-name {
+        font-size: 120%;
+      }
+      .doctor-picture {
+        float: right;
+      }
+    }
   }
 }
