@@ -5,7 +5,7 @@ function Doctor() {
 
 Doctor.prototype.searchBySymptom = function(condition, displayDoctors, displayError) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + condition + '&location=45.523%2C-122.677%2C1000&user_location=37.773%2C-122.413&sort=distance-asc&skip=0&limit=25&user_key=' + apiKey).then(function(response) {
-    if (response.length > 0) {
+    if (response) {
       for (var i = 0; i < response.data.length; i++) {
         var doctorFirstName = response.data[i].profile.first_name;
         var doctorLastName = response.data[i].profile.last_name;
@@ -77,7 +77,7 @@ Doctor.prototype.searchBySymptom = function(condition, displayDoctors, displayEr
 
 Doctor.prototype.searchBySpecialty = function(specialty, displayDoctors, displayError) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=' + specialty + '&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&sort=distance-asc&skip=0&limit=25&user_key=' + apiKey).then(function(response) {
-    if (response.length > 0) {
+    if (response) {
       for (var i = 0; i < response.data.length; i++) {
         var doctorFirstName = response.data[i].profile.first_name;
         var doctorLastName = response.data[i].profile.last_name;
@@ -136,9 +136,10 @@ Doctor.prototype.searchBySpecialty = function(specialty, displayDoctors, display
 
         displayDoctors(doctorFirstName, doctorLastName, doctorTitle, doctorPicture, doctorSpecialties, doctorEducation, doctorGender, doctorPracticesOpen, doctorPracticesClosed, doctorInsurances);
       }
-    } else {
+    } else if (response.data.length <= 0) {
       displayError();
     }
+    console.log(response);
 
   }).fail(function(error) {
     displayError();
