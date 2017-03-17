@@ -1,0 +1,33 @@
+$light-brown: #AD7652;
+$cream: #EED4A4;
+$dark-brown: #64432F;
+
+body {
+  background-color: $cream;
+}
+
+#topbanner {
+  background-color: $light-brown;
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  color: #444141;
+  width: 100%;
+  display: block;
+  top: 0;
+  padding: 2px;
+  margin-bottom: 0px;
+  a {
+    color: $dark-brown;
+  }
+  a:hover {
+    color: white;
+  }
+}
+
+.container {
+  font-family: 'Lobster', cursive;
+  form {
+    font-family: 'Libre Baskerville', serif;
+  }
+}
