@@ -12,7 +12,7 @@
   </head>
   <body>
     <div id="topbanner">
-      <h1><a href="index.html">Health Detective</a></h1>
+      <h1><a href="index.html">Health Detective <i class="fa fa-search" aria-hidden="true"></i></a></h1>
     </div>
     <div class="container">
       <div class="row">
@@ -26,24 +26,23 @@
               </div>
               <button type="submit" class="btn btn-info">Search for doctors!</button>
             </form>
+            <hr>
             <h4>Browse by Specialty:</h4>
-            <form>
+            <form id="browse-form">
               <div class="form-group">
                 <label for="condition">Select specialty:</label>
-                <select class="" name="specialty-search">
+                <select class="" id="specialty-search">
                   <option value="pediatrician">Pediatrics</option>
-                  <option value="surgeon">Surgery</option>
                   <option value="gastroenterologist">Gastroenterology</option>
                   <option value="gynecologist">OB/GYN</option>
-                  <!-- <option value=""></option>
-                  <option></option>
-                  <option></option>
-                  <option></option>
-                  <option></option>
-                  <option></option> -->
+                  <option value="anesthesiologist">Anesthesiology</option>
+                  <option value="cardiologist">Cardiology</option>
+                  <option value="urologist">Urology</option>
+                  <option value="oncologist">Oncology</option>
+                  <option value="">Family Medicine</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-info">Search for doctors!</button>
+              <button type="submit" class="btn btn-info">Browse</button>
             </form>
           </div>
         </div>

@@ -36,9 +36,12 @@ body {
   .search-section {
     height: auto;
     position: fixed;
-    width: 30%;
+    width: 25%;
+    hr {
+      border-color: $light-brown;
+    }
   }
-  #search-form {
+  #search-form, #browse-form {
     font-family: 'Libre Baskerville', serif;
   }
   #doctor-results {

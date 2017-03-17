@@ -19,7 +19,13 @@ newDoctor.findSpecialties();
     $('#found-doctors').empty();
     var condition = $('#condition').val();
     newDoctor.search(condition, displayDoctors);
+  });
 
+  $('#browse-form').submit(function(event) {
+    event.preventDefault();
+    $('#found-doctors').empty();
+    var specialty = $('#specialty-search').val();
+    newDoctor.searchBySpecialty(specialty, displayDoctors);
   });
 
 });
