@@ -6,7 +6,7 @@
 
 ## Description
 
-_This web page allows a user to enter a medical issue and find a list of doctors that treat it._
+_This web page allows a user to enter a medical issue and find a list of doctors that treat it. It also allows a user to browse doctors by specialty._
 
 ## Setup/Installation Requirements
 
@@ -19,7 +19,8 @@ _This web page allows a user to enter a medical issue and find a list of doctors
 
 |    *Behavior*   |    *Input*    |     *Output*    |
 |-----------------|---------------|-----------------|
-| User enters a medical condition| "Stomach ache" | Receives list of doctors that treat it: "Dr. John Doe, Gastroenterologist"|
+| User enters a medical condition| "Stomach ache" | Receives list of doctors that treat it: "John Doe, MD, Specialties: Gastroenterologist, Education: OHSU (MD), Practices: John Doe Offices, Insurances: Anthem, Healthnet"|
+| User selects a specialty| "Cardiology" | Receives list of doctors that treat it: "Jill Jane, MD, Specialties: Cardiology, Education: OHSU (MD), Practices: Cardiology NW, Insurances: Anthem, Healthnet"|
 
 
 ## Known Bugs
