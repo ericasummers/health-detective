@@ -3,7 +3,7 @@ var apiKey = require('./../.env').ApiKey;
 function Doctor() {
 }
 
-Doctor.prototype.search = function(condition, displayDoctors) {
+Doctor.prototype.searchBySymptom = function(condition, displayDoctors) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + condition + '&location=45.523%2C-122.677%2C1000&user_location=37.773%2C-122.413&sort=distance-asc&skip=0&limit=25&user_key=' + apiKey).then(function(response) {
     for (var i = 0; i < response.data.length; i++) {
       var doctorFirstName = response.data[i].profile.first_name;
@@ -35,8 +35,33 @@ Doctor.prototype.search = function(condition, displayDoctors) {
       } else {
         doctorEducation.push('Not Available');
       }
+      var doctorPracticesOpen = [];
+      var doctorPracticesClosed = [];
+      if (response.data[i].practices.length > 0) {
+        for (var m = 0; m < response.data[i].practices.length; m++) {
+          var practiceName = response.data[i].practices[m].name;
+          var acceptsPatients = response.data[i].practices[m].accepts_new_patients;
+          if (acceptsPatients) {
+            doctorPracticesOpen.push(practiceName);
+          } else {
+            doctorPracticesClosed.push(practiceName);
+          }
+        }
+      } else {
+        doctorPractices.push('Unavailable');
+      }
 
-      displayDoctors(doctorFirstName, doctorLastName, doctorTitle, doctorPicture, doctorSpecialties, doctorEducation, doctorGender);
+      var doctorInsurances = [];
+      if (response.data[i].insurances.length > 0) {
+        for (n = 0; n < response.data[i].insurances.length; n++) {
+          doctorInsurances.push(response.data[i].insurances[n].insurance_provider.name);
+        }
+      } else {
+        doctorInsurances.push('Unavailable');
+      }
+
+
+      displayDoctors(doctorFirstName, doctorLastName, doctorTitle, doctorPicture, doctorSpecialties, doctorEducation, doctorGender, doctorPracticesOpen, doctorPracticesClosed, doctorInsurances);
     }
     console.log(response);
 
@@ -82,12 +107,6 @@ Doctor.prototype.searchBySpecialty = function(specialty, displayDoctors) {
     }
   }).fail(function(error) {
 
-  });
-};
-
-Doctor.prototype.findSpecialties = function() {
-  $.get('https://api.betterdoctor.com/2016-03-01/specialties?user_key=' + apiKey).then(function(response) {
-    console.log(response);
   });
 };
 

@@ -58,16 +58,30 @@ body {
         font-weight: bold;
       }
       .doctor-name {
-        font-size: 120%;
+        font-size: 140%;
+      }
+      .doctor-bold {
+        font-size: 110%;
       }
       .doctor-picture {
         float: right;
+        margin: 2%;
       }
       .fa-female {
         color: $pink;
+        font-size: 140%;
       }
       .fa-male {
         color: $blue;
+        font-size: 140%;
+      }
+      .newpts {
+        color: green;
+        font-weight: bold;
+      }
+      .nopts {
+        color: red;
+        font-weight: bold;
       }
     }
   }
