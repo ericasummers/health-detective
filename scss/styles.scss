@@ -1,6 +1,8 @@
 $light-brown: #AD7652;
 $cream: #EED4A4;
 $dark-brown: #64432F;
+$pink: #F723A0;
+$blue: #2373F7;
 
 body {
   background-color: $cream;
@@ -57,6 +59,12 @@ body {
       }
       .doctor-picture {
         float: right;
+      }
+      .fa-female {
+        color: $pink;
+      }
+      .fa-male {
+        color: $blue;
       }
     }
   }

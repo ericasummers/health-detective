@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Lobster" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="build/css/vendor.css">
     <link rel="stylesheet" href="build/css/styles.css">
     <script type="text/javascript" src="build/js/vendor.min.js"></script>
@@ -22,6 +23,25 @@
               <div class="form-group">
                 <label for="condition">Enter your health issue/condition:</label>
                 <input type="text" id="condition" placeholder="toothache" required>
+              </div>
+              <button type="submit" class="btn btn-info">Search for doctors!</button>
+            </form>
+            <h4>Browse by Specialty:</h4>
+            <form>
+              <div class="form-group">
+                <label for="condition">Select specialty:</label>
+                <select class="" name="specialty-search">
+                  <option value="pediatrician">Pediatrics</option>
+                  <option value="surgeon">Surgery</option>
+                  <option value="gastroenterologist">Gastroenterology</option>
+                  <option value="gynecologist">OB/GYN</option>
+                  <!-- <option value=""></option>
+                  <option></option>
+                  <option></option>
+                  <option></option>
+                  <option></option>
+                  <option></option> -->
+                </select>
               </div>
               <button type="submit" class="btn btn-info">Search for doctors!</button>
             </form>
