@@ -103,7 +103,32 @@ Doctor.prototype.searchBySpecialty = function(specialty, displayDoctors) {
         doctorEducation.push('Not Available');
       }
 
-      displayDoctors(doctorFirstName, doctorLastName, doctorTitle, doctorPicture, doctorSpecialties, doctorEducation, doctorGender);
+      var doctorPracticesOpen = [];
+      var doctorPracticesClosed = [];
+      if (response.data[i].practices.length > 0) {
+        for (var m = 0; m < response.data[i].practices.length; m++) {
+          var practiceName = response.data[i].practices[m].name;
+          var acceptsPatients = response.data[i].practices[m].accepts_new_patients;
+          if (acceptsPatients) {
+            doctorPracticesOpen.push(practiceName);
+          } else {
+            doctorPracticesClosed.push(practiceName);
+          }
+        }
+      } else {
+        doctorPractices.push('Unavailable');
+      }
+
+      var doctorInsurances = [];
+      if (response.data[i].insurances.length > 0) {
+        for (n = 0; n < response.data[i].insurances.length; n++) {
+          doctorInsurances.push(response.data[i].insurances[n].insurance_provider.name);
+        }
+      } else {
+        doctorInsurances.push('Unavailable');
+      }
+
+      displayDoctors(doctorFirstName, doctorLastName, doctorTitle, doctorPicture, doctorSpecialties, doctorEducation, doctorGender, doctorPracticesOpen, doctorPracticesClosed, doctorInsurances);
     }
   }).fail(function(error) {
 
