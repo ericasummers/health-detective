@@ -15,13 +15,22 @@ Doctor.prototype.search = function(condition, displayDoctors) {
         doctorSpecialties.push(response.data[i].specialties[j].name);
       }
       var doctorEducation = [];
-      for (var k = 0; k < response.data[i].educations.length; k++) {
-        var schoolName = response.data[i].educations[k].school;
-        var schoolDegree = response.data[i].educations[k].degree;
-        var gradYear = response.data[i].educations[k].graduation_year;
-        doctorEducation.push(schoolName + ' (' + schoolDegree + ') ' + '- ' + gradYear);
+      if (response.data[i].educations.length > 0) {
+        for (var k = 0; k < response.data[i].educations.length; k++) {
+          var schoolName = response.data[i].educations[k].school;
+          var schoolDegree = response.data[i].educations[k].degree;
+          if (response.data[i].educations[k].graduation_year) {
+            var gradYear = response.data[i].educations[k].graduation_year;
+            doctorEducation.push(schoolName + ' (' + schoolDegree + ') ' + '- Graduated in ' + gradYear);
+          } else {
+            doctorEducation.push(schoolName + ' (' + schoolDegree + ')');
+          }
 
+        }
+      } else {
+        doctorEducation.push('Not Available');
       }
+
       displayDoctors(doctorFirstName, doctorLastName, doctorTitle, doctorPicture, doctorSpecialties, doctorEducation);
     }
     console.log(response);
