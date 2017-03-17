@@ -27,6 +27,10 @@ var displayDoctors = function(firstName, lastName, title, picture, specialties, 
   $('#found-doctors').append('<li class="doctor-entry"><img src="' + picture + '" class="doctor-picture"><span class="doctor-name">' + firstName + ' ' + lastName + ', ' + title + ' ' + icon + '</span> ' + '<br>' + '<span class="doctor-bold">Specialties</span>: ' + specialties.join(", ") + '<br><span class="doctor-bold">Education</span>: ' + education.join(", ") + '<br><span class="doctor-bold">Practices</span>: ' +  practice + '<br><span class="doctor-bold">Insurances Accepted</span>:' + docInsurance + '</li><br>');
 };
 
+var displayError = function() {
+  $('#found-doctors').append('Your search was unsuccessful, please try again with another wording or specialty!');
+}
+
 $(document).ready(function() {
 var newDoctor = new Doctor();
 
@@ -34,14 +38,14 @@ var newDoctor = new Doctor();
     event.preventDefault();
     $('#found-doctors').empty();
     var condition = $('#condition').val();
-    newDoctor.searchBySymptom(condition, displayDoctors);
+    newDoctor.searchBySymptom(condition, displayDoctors, displayError);
   });
 
   $('#browse-form').submit(function(event) {
     event.preventDefault();
     $('#found-doctors').empty();
     var specialty = $('#specialty-search').val();
-    newDoctor.searchBySpecialty(specialty, displayDoctors);
+    newDoctor.searchBySpecialty(specialty, displayDoctors, displayError);
   });
 
 });
