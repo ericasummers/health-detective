@@ -37,7 +37,7 @@ var newDoctor = new Doctor();
   $('#search-form').submit(function(event) {
     event.preventDefault();
     $('#found-doctors').empty();
-    var condition = $('#condition').val();
+    condition = $('#condition').val();
     newDoctor.searchBySymptom(condition, displayDoctors, displayError);
   });
 
@@ -46,6 +46,16 @@ var newDoctor = new Doctor();
     $('#found-doctors').empty();
     var specialty = $('#specialty-search').val();
     newDoctor.searchBySpecialty(specialty, displayDoctors, displayError);
+  });
+
+  $(window).scroll(function() {
+    var startFrom = '26';
+    var endAt = '50';
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 50) {
+      newDoctor.updateSearch(startFrom, endAt, condition, displayDoctors);
+      startFrom = (+startFrom) + 25;
+      endAt = (+endAt) + 25;
+    }
   });
 
 });
