@@ -55,7 +55,9 @@ Doctor.prototype.searchBySymptom = function(condition, displayDoctors, displayEr
         var doctorInsurances = [];
         if (response.data[i].insurances.length > 0) {
           for (n = 0; n < response.data[i].insurances.length; n++) {
-            doctorInsurances.push(response.data[i].insurances[n].insurance_provider.name);
+            if (doctorInsurances.indexOf(response.data[i].insurances[n].insurance_provider.name) < 0) {
+              doctorInsurances.push(response.data[i].insurances[n].insurance_provider.name);
+            }
           }
         } else {
           doctorInsurances.push('Unavailable');
@@ -128,7 +130,9 @@ Doctor.prototype.searchBySpecialty = function(specialty, displayDoctors, display
         var doctorInsurances = [];
         if (response.data[i].insurances.length > 0) {
           for (n = 0; n < response.data[i].insurances.length; n++) {
-            doctorInsurances.push(response.data[i].insurances[n].insurance_provider.name);
+            if (doctorInsurances.indexOf(response.data[i].insurances[n].insurance_provider.name) < 0) {
+              doctorInsurances.push(response.data[i].insurances[n].insurance_provider.name);
+            }
           }
         } else {
           doctorInsurances.push('Unavailable');
@@ -139,7 +143,6 @@ Doctor.prototype.searchBySpecialty = function(specialty, displayDoctors, display
     } else {
       displayError();
     }
-    console.log(response);
 
   }).fail(function(error) {
     displayError();
@@ -199,7 +202,9 @@ Doctor.prototype.updateSearch = function(startFrom, searchAmount, condition, dis
         var doctorInsurances = [];
         if (response.data[i].insurances.length > 0) {
           for (n = 0; n < response.data[i].insurances.length; n++) {
-            doctorInsurances.push(response.data[i].insurances[n].insurance_provider.name);
+            if (doctorInsurances.indexOf(response.data[i].insurances[n].insurance_provider.name) < 0) {
+              doctorInsurances.push(response.data[i].insurances[n].insurance_provider.name);
+            }
           }
         } else {
           doctorInsurances.push('Unavailable');

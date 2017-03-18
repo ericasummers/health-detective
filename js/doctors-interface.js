@@ -53,7 +53,6 @@ var startFrom = 1;
     var searchAmount = 25;
     if($(window).scrollTop() + $(window).height() === $(document).height()) {
       startFrom = startFrom + searchAmount;
-      console.log(startFrom);
       newDoctor.updateSearch(startFrom, searchAmount, condition, displayDoctors);
     }
   });
