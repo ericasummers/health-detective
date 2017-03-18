@@ -49,12 +49,12 @@ var newDoctor = new Doctor();
   });
 
   $(window).scroll(function() {
-    var startFrom = '26';
-    var endAt = '50';
-    if($(window).scrollTop() + $(window).height() > $(document).height() - 50) {
+    var startFrom = 26;
+    var endAt = 50;
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
       newDoctor.updateSearch(startFrom, endAt, condition, displayDoctors);
-      startFrom = (+startFrom) + 25;
-      endAt = (+endAt) + 25;
+      startFrom += 25;
+      endAt += 25;
     }
   });
 
