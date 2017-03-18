@@ -146,8 +146,8 @@ Doctor.prototype.searchBySpecialty = function(specialty, displayDoctors, display
   });
 };
 
-Doctor.prototype.updateSearch = function(startFrom, endAt, condition, displayDoctors) {
-  $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + condition + '&location=45.523%2C-122.677%2C1000&user_location=45.523%2C-122.677&sort=distance-asc&skip=' + startFrom + '&limit=' + endAt + '&user_key=' + apiKey).then(function(response) {
+Doctor.prototype.updateSearch = function(startFrom, searchAmount, condition, displayDoctors) {
+  $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + condition + '&location=45.523%2C-122.677%2C1000&user_location=45.523%2C-122.677&sort=distance-asc&skip=' + startFrom + '&limit=' + searchAmount + '&user_key=' + apiKey).then(function(response) {
     console.log(response);
     if (response.data.length > 0) {
       for (var i = 0; i < response.data.length; i++) {
