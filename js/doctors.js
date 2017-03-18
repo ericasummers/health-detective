@@ -42,9 +42,9 @@ Doctor.prototype.searchBySymptom = function(condition, displayDoctors, displayEr
           for (var m = 0; m < response.data[i].practices.length; m++) {
             var practiceName = response.data[i].practices[m].name;
             var acceptsPatients = response.data[i].practices[m].accepts_new_patients;
-            if (acceptsPatients) {
+            if (acceptsPatients && doctorPracticesOpen.indexOf(practiceName) < 0) {
               doctorPracticesOpen.push(practiceName);
-            } else {
+            } else if (!acceptsPatients && doctorPracticesClosed.indexOf(practiceName) < 0){
               doctorPracticesClosed.push(practiceName);
             }
           }
@@ -69,7 +69,7 @@ Doctor.prototype.searchBySymptom = function(condition, displayDoctors, displayEr
     } else {
       displayError();
     }
-
+    console.log(response);
 
   }).fail(function(error) {
 
@@ -117,9 +117,9 @@ Doctor.prototype.searchBySpecialty = function(specialty, displayDoctors, display
           for (var m = 0; m < response.data[i].practices.length; m++) {
             var practiceName = response.data[i].practices[m].name;
             var acceptsPatients = response.data[i].practices[m].accepts_new_patients;
-            if (acceptsPatients) {
+            if (acceptsPatients && doctorPracticesOpen.indexOf(practiceName) < 0) {
               doctorPracticesOpen.push(practiceName);
-            } else {
+            } else if (!acceptsPatients && doctorPracticesClosed.indexOf(practiceName) < 0) {
               doctorPracticesClosed.push(practiceName);
             }
           }
@@ -189,9 +189,9 @@ Doctor.prototype.updateSearch = function(startFrom, searchAmount, condition, dis
           for (var m = 0; m < response.data[i].practices.length; m++) {
             var practiceName = response.data[i].practices[m].name;
             var acceptsPatients = response.data[i].practices[m].accepts_new_patients;
-            if (acceptsPatients) {
+            if (acceptsPatients && doctorPracticesOpen.indexOf(practiceName) < 0) {
               doctorPracticesOpen.push(practiceName);
-            } else {
+            } else if (!acceptsPatients && doctorPracticesClosed.indexOf(practiceName) < 0) {
               doctorPracticesClosed.push(practiceName);
             }
           }
