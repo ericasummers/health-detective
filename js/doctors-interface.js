@@ -33,6 +33,7 @@ var displayError = function() {
 
 $(document).ready(function() {
 var newDoctor = new Doctor();
+var startFrom = 1;
 
   $('#search-form').submit(function(event) {
     event.preventDefault();
@@ -49,10 +50,10 @@ var newDoctor = new Doctor();
   });
 
   $(window).scroll(function() {
+    var searchAmount = 25;
     if($(window).scrollTop() + $(window).height() === $(document).height()) {
-      var startFrom = 1;
-      var searchAmount = 25;
-      startFrom += searchAmount;
+      startFrom = startFrom + searchAmount;
+      console.log(startFrom);
       newDoctor.updateSearch(startFrom, searchAmount, condition, displayDoctors);
     }
   });
