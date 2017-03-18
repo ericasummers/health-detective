@@ -50,11 +50,9 @@ var newDoctor = new Doctor();
 
   $(window).scroll(function() {
     var startFrom = 26;
-    var endAt = 50;
-    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    var endAt = start + 25;
+    if($(window).scrollTop() + $(window).height() === $(document).height()) {
       newDoctor.updateSearch(startFrom, endAt, condition, displayDoctors);
-      startFrom += 25;
-      endAt += 25;
     }
   });
 
